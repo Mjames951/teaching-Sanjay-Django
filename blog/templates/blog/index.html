@@ -1,13 +1,12 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>BLOG</title>
-</head>
+{% extends "blog/base.html" %}
+{% block title %}
+    BLOG
+{% endblock %}
+
+
+{% block content %}
     <h1>WELCOME TO MY BLOG</h1>
     {% for post in posts %}
-    <h2>{{ post.title }}</h2>
-    <p>{{ post.content }}</p>
+    <h2><a href="{% url 'blogpost' id=post.id %}">{{ post.title }}</a></h2>
     {% endfor %}
-</html>
+{% endblock %}
