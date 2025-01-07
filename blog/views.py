@@ -29,3 +29,17 @@ def addPost(request):
     return render(request, "blog/addpost.html", {
         "form": form
     })
+
+def editPost(request, id):
+    try: post = get_object_or_404(Post, id=id)
+    except: return redirect("index")
+    if request.method == "POST":
+        form = AddPostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            post = form.save()
+            return redirect("blogpost", id=post.id)
+        
+    form = AddPostForm(instance=post)
+    return render(request, "blog/editpost.html", {
+        "form": form
+    })
