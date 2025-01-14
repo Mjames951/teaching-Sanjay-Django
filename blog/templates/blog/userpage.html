@@ -10,8 +10,8 @@ userpage
 
 <h1>{{ user.username }} posts mothafucka</h1>
 {% for post in posts %}
-
-    {{post.title}}
+<a href="{% url 'blogpost' id=post.id %}"><p>{{post.title}}</p></a>  
+    
 
 {% endfor %}
 
