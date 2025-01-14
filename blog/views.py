@@ -44,6 +44,13 @@ def editPost(request, id):
         "form": form
     })
 
+def deletePost(request, id):
+    if not request.user.is_superuser: redirect("index")
+    try: post = get_object_or_404(Post, id=id)
+    except: redirect("index")
+    post.delete()
+    return redirect("index")
+
 def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
@@ -54,4 +61,12 @@ def register(request):
         form = RegisterForm()
     return render(request, "blog/register.html", {
         "form": form
+    })
+
+def userPage(request, username):
+    user = get_object_or_404(User, username=username)
+    posts = Post.objects.filter(author=user)
+
+    return render(request, "blog/userpage.html", {
+        "posts": posts,
     })

@@ -8,6 +8,7 @@
     <h1>WELCOME TO MY BLOG</h1>
     {% for post in posts %}
     <h2><a href="{% url 'blogpost' id=post.id %}">{{ post.title }}</a></h2>
+    <p>by: <a href="{% url 'userpage' username=post.author.username %}">{{ post.author.username }}</a></p>
     {% endfor %}
     <a href="{% url 'addpost' %}"><p>add blog posts</p></a>
 {% endblock %}
