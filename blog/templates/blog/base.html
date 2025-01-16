@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,22 +7,32 @@
     <title>
         {% block title %}my blog{% endblock %}
     </title>
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
     {% block css %}{% endblock %}
     {% block script %}{% endblock %}
 </head>
 <body>
-    {% if user.is_authenticated %} 
-        <p>hello, {{ user.username }}</p>
-        <form action="{% url 'logout' %}?next=/" method="post">
-            {% csrf_token %}
-            <button type="submit">Log out</button>
-        </form>
-    {% else %}
-        <a href="{% url 'login' %}">login</a>
-        <a href="{% url 'register' %}">Register</a>
-    {% endif %}
-    <a href="{% url 'index' %}"><p>GO HOME</p></a>
-    <a href="{% url 'about' %}"><p>about page</p></a>
+    <nav>
+        <div class="nav-left">
+            {% if user.is_authenticated %} 
+            <p>hello, {{ user.username }}</p>
+            <form action="{% url 'logout' %}?next=/" method="post">
+                {% csrf_token %}
+                <button type="submit">Log out</button>
+            </form>
+            {% else %}
+                <a href="{% url 'login' %}">login</a>
+                <a href="{% url 'register' %}">Register</a>
+            {% endif %}
+        </div>
+        <div class="nav-middle">
+            <a href="{% url 'index' %}"><p>GO HOME</p></a>
+        </div>
+        <div class="nav-right">
+            <a href="{% url 'about' %}"><p>about page</p></a>
+        </div>
+    </nav>
+    
     {% block content %}
     ayo man you forgot stuff!
     {% endblock %}
