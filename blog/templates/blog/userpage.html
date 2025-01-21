@@ -8,7 +8,7 @@ userpage
 
 {% block content %}
 
-<h1>{{ user.username }} posts mothafucka</h1>
+<h1>{{ profile.username }}'s recent posts</h1>
 {% for post in posts %}
 <a href="{% url 'blogpost' id=post.id %}"><p>{{post.title}}</p></a>  
     

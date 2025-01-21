@@ -22,7 +22,7 @@ nav {
     background-color: salmon;
     overflow: hidden;
     display: grid;
-    grid-template-columns: 25% 50% 25%;
+    grid-template-columns: 30% 40% 30%;
     text-align: center;
     padding: var(--p5padding);
 }
@@ -31,8 +31,20 @@ nav a {
     text-decoration: none;
 }
 
+nav a:hover {
+    text-decoration: underline;
+}
+
 nav p {
     display: inline;
+}
+
+.nav-left {
+    text-align: left;
+}
+
+.nav-right {
+    text-align: right;
 }
 
 h1, 
@@ -45,6 +57,16 @@ a {
     color: var(--textcolor)
 }
 
+a:hover {
+    text-decoration: none;
+    color: gray;
+}
+
+.index-posts {
+    column-width: 90%;
+    margin-top: .25rem;
+}
+
 .blog-list-item {
     background-color: light-dark(aliceblue, black);
     border-radius: 0.5rem;
@@ -54,6 +76,7 @@ a {
 
 .maincontent {
     padding: 0 .75rem 0;
+    margin-top: 1rem;
 }
 
 .subtitle {
@@ -61,8 +84,21 @@ a {
     color: gray;
 }
 
-@media screen and (min-width: 1000px) {
-    html{
+@media screen and (min-width: 800px) {
+    html {
         font-size: 1.8vw;
+    }
+    .index-posts {
+        column-width: 375px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    html {
+        font-size: 20px;
+    }
+    .maincontent {
+        max-width: 1500px;
+        margin: 0 auto 0;
     }
 }

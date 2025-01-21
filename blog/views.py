@@ -19,6 +19,7 @@ def blogPost(request, id):
             comment.author = request.user
             comment.post = post
             comment.save()
+            form = CommentForm()
     else:
         form = CommentForm() 
     comments = Comment.objects.filter(post=post).order_by('-created_at')[:100]
@@ -112,5 +113,5 @@ def userPage(request, username):
 
     return render(request, "blog/userpage.html", {
         "posts": posts,
-        "user": user,
+        "profile": user,
     })
