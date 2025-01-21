@@ -56,7 +56,9 @@ def deleteComment(request, id):
 def about(request):
     return render(request, "blog/about.html", context=None)
 
+
 def addPost(request):
+    if not request.user.is_authenticated: return redirect("login")
     if request.method == "POST":
         form = AddPostForm(request.POST, request.FILES)
         if form.is_valid():

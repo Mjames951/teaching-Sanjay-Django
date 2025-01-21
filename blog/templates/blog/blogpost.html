@@ -12,7 +12,7 @@
 
 <h1>{{ post.title }}{% if user.is_superuser %}<a href="{% url 'editpost' id=post.id %}">(edit)</a>{% endif %}</h1>
 {% if post.image %}<img src="{{ post.image.url }}" style="max-width: 300px; max-height: 300px;">{% endif %}
-<p>{{ post.content }}</p>
+<h3>{{ post.content }}</h3>
 
 <div class="comments">
 
